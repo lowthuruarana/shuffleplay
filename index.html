@@ -15,7 +15,18 @@
       දේශනා ලබා ගත නොහැක
     </p>
     <p id="category" class="h-6 flex items-center justify-center text-neutral-500 mb-8 text-base sm:text-lg"></p>
-    <img id="thumbnail" class="mx-auto mb-8 rounded-lg shadow" style="max-width:100%;height:auto;display:none;" alt="YouTube thumbnail" />
+    <div class="w-full aspect-video mb-8">
+      <iframe
+        id="ytplayer"
+        class="w-full h-full rounded-lg shadow"
+        src=""
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        style="display:none;"
+        title="YouTube player"
+      ></iframe>
+    </div>
 
     <button id="anotherBtn"
             class="w-full py-3 mb-4 rounded-xl font-semibold bg-[#feb811] text-black
