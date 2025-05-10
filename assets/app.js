@@ -1,3 +1,6 @@
+// Browser detection
+const isDesktopChrome = /Chrome/.test(navigator.userAgent) && !/Edge/.test(navigator.userAgent) && !/Mobile/.test(navigator.userAgent);
+
 const titleEl   = document.getElementById('title');
 const categoryEl = document.getElementById('category');
 const watchBtn  = document.getElementById('watchBtn');
