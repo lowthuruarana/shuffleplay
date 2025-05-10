@@ -2,7 +2,7 @@ const titleEl   = document.getElementById('title');
 const categoryEl = document.getElementById('category');
 const watchBtn  = document.getElementById('watchBtn');
 const anotherBtn = document.getElementById('anotherBtn');
-const thumbnailEl = document.getElementById('thumbnail');
+const ytplayerEl = document.getElementById('ytplayer');
 
 let list = [];
 
@@ -16,7 +16,7 @@ fetch('data/videos.json')
     console.error(err);
     titleEl.textContent = '⚠️  දේශනා පූරණය කළ නොහැකි විය';
     categoryEl.textContent = '';
-    if (thumbnailEl) thumbnailEl.style.display = 'none';
+    if (ytplayerEl) ytplayerEl.style.display = 'none';
   });
 
 function getYouTubeId(url) {
@@ -33,13 +33,14 @@ function pick() {
   watchBtn.href = item.link;
   categoryEl.textContent = `(Category: ${item.category ? item.category : 'not available'})`;
 
-  // Set thumbnail
+  // Set embedded player
   const videoId = getYouTubeId(item.link);
   if (videoId) {
-    thumbnailEl.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-    thumbnailEl.style.display = '';
+    ytplayerEl.src = `https://www.youtube.com/embed/${videoId}`;
+    ytplayerEl.style.display = '';
   } else {
-    thumbnailEl.style.display = 'none';
+    ytplayerEl.src = '';
+    ytplayerEl.style.display = 'none';
   }
 }
 
