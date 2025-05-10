@@ -14,7 +14,7 @@ fetch('data/videos.json')
   .catch(err => {
     console.error(err);
     titleEl.textContent = '⚠️  දේශනා පූරණය කළ නොහැකි විය';
-    if (categoryEl) categoryEl.style.display = 'none';
+    categoryEl.textContent = '';
   });
 
 function pick() {
@@ -22,12 +22,7 @@ function pick() {
   const item = list[Math.floor(Math.random() * list.length)];
   titleEl.textContent = item.title;
   watchBtn.href = item.link;
-  if (item.category) {
-    categoryEl.textContent = `(Category: ${item.category})`;
-  } else {
-    categoryEl.textContent = '(Category: not available)';
-  }
-  categoryEl.style.display = '';
+  categoryEl.textContent = `(Category: ${item.category ? item.category : 'not available'})`;
 }
 
 anotherBtn.addEventListener('click', pick); 
