@@ -1,4 +1,5 @@
 const titleEl   = document.getElementById('title');
+const categoryEl = document.getElementById('category');
 const watchBtn  = document.getElementById('watchBtn');
 const anotherBtn = document.getElementById('anotherBtn');
 
@@ -13,6 +14,7 @@ fetch('data/videos.json')
   .catch(err => {
     console.error(err);
     titleEl.textContent = '⚠️  දේශනා පූරණය කළ නොහැකි විය';
+    if (categoryEl) categoryEl.style.display = 'none';
   });
 
 function pick() {
@@ -20,6 +22,12 @@ function pick() {
   const item = list[Math.floor(Math.random() * list.length)];
   titleEl.textContent = item.title;
   watchBtn.href = item.link;
+  if (item.category) {
+    categoryEl.textContent = `(Category: ${item.category})`;
+  } else {
+    categoryEl.textContent = '(Category: not available)';
+  }
+  categoryEl.style.display = '';
 }
 
 anotherBtn.addEventListener('click', pick); 
