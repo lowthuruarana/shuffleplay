@@ -3,7 +3,6 @@ const isDesktopChrome = /Chrome/.test(navigator.userAgent) && !/Edge/.test(navig
 
 const titleEl   = document.getElementById('title');
 const categoryEl = document.getElementById('category');
-const watchBtn  = document.getElementById('watchBtn');
 const anotherBtn = document.getElementById('anotherBtn');
 const ytplayerEl = document.getElementById('ytplayer');
 
@@ -17,7 +16,7 @@ fetch('data/videos.json')
   })
   .catch(err => {
     console.error(err);
-    titleEl.textContent = '⚠️  දේශනා පූරණය කළ නොහැකි විය';
+    titleEl.textContent = '⚠️ දේශනා ලබා ගත නොහැක';
     categoryEl.textContent = '';
     if (ytplayerEl) ytplayerEl.style.display = 'none';
   });
@@ -33,7 +32,6 @@ function pick() {
   if (!list.length) return;
   const item = list[Math.floor(Math.random() * list.length)];
   titleEl.textContent = item.title;
-  watchBtn.href = item.link;
   categoryEl.textContent = `(Category: ${item.category ? item.category : 'not available'})`;
 
   // Set embedded player
